@@ -1,0 +1,11 @@
+service: () -> {
+    createBattle: (nat64, nat16) -> (bool);
+    createCharacter: () -> (bool);
+    endBattle: (text) -> (record {id:text; betAmount:nat64; battleAdmin:text; winner:record {result:float64; owner:text; gameResults:vec float64; approved:bool}; characters:vec record {owner:text; retryCount:nat64; battleHistory:vec text}; results:vec record {result:float64; owner:text; gameResults:vec float64; approved:bool}; maxParticipantAmount:nat16});
+    enterBattle: (text) -> (bool);
+    getBattleByUuid: (text) -> (record {id:text; betAmount:nat64; battleAdmin:text; winner:record {result:float64; owner:text; gameResults:vec float64; approved:bool}; characters:vec record {owner:text; retryCount:nat64; battleHistory:vec text}; results:vec record {result:float64; owner:text; gameResults:vec float64; approved:bool}; maxParticipantAmount:nat16}) query;
+    getCharacterByOwner: (text) -> (record {owner:text; retryCount:nat64; battleHistory:vec text}) query;
+    initialize: (text) -> (bool);
+    openedBattles: () -> (vec record {id:text; betAmount:nat64; battleAdmin:text; winner:record {result:float64; owner:text; gameResults:vec float64; approved:bool}; characters:vec record {owner:text; retryCount:nat64; battleHistory:vec text}; results:vec record {result:float64; owner:text; gameResults:vec float64; approved:bool}; maxParticipantAmount:nat16}) query;
+    upgradeRetryCountWithTokens: (nat16) -> (bool);
+}
